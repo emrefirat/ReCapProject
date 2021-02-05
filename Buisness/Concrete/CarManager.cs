@@ -9,24 +9,24 @@ namespace Buisness.Concrete
 {
     public class CarManager : ICarService
     {
-        ICarDal _iCarDal;
-        public CarManager(ICarDal  iCarDal)
+        ICarDal _icarDal;
+        public CarManager(ICarDal icarDal)
         {
-            _iCarDal = iCarDal;
+            _icarDal = icarDal;
         }
         public List<Car> GetAll()
         {
-            return _iCarDal.GetAll();
+            return _icarDal.GetAll();
         }
 
-        public void Add(Car car)
+        public List<Car> GetAllByBrandId(int id)
         {
-            _iCarDal.Add(car);
+            return _icarDal.GetAll(p => p.BrandId == id);
         }
 
-        public void Update(Car car)
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
         {
-            _iCarDal.Update(car);
+            return _icarDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
         }
     }
 }

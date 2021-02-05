@@ -9,9 +9,9 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetByDailyPrice(500,500))
+            foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine(car.Description);
+                Console.WriteLine("Gunluk Kira Bedeli" + ":  " + car.DailyPrice);
             }
             BrandManager brandMananger = new BrandManager(new EfBrandDal());
             foreach (var brand in brandMananger.GetAll())
@@ -19,7 +19,6 @@ namespace ConsoleUI
                 Console.WriteLine(brand.Id + ": " + brand.BrandName);
             }
 
-            Console.WriteLine("Hello World!");
         }
     }
 }

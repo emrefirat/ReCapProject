@@ -9,24 +9,65 @@ namespace Buisness.Concrete
 {
     public class CarManager : ICarService
     {
-        ICarDal _icarDal;
+        ICarDal _carDal;
         public CarManager(ICarDal icarDal)
         {
-            _icarDal = icarDal;
+            _carDal = icarDal;
         }
+
+        public void Add(Car car)
+        {
+            if (car.Name.Length > 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine("Araba Eklendi : " + car.Name);
+            }
+            else
+            {
+                Console.WriteLine("Arabanın Ismi 2 karakterden kisa veya Günlük fiyatı 0'dan küçük.");
+            }
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
+        }
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
+
         public List<Car> GetAll()
         {
-            return _icarDal.GetAll();
+            return _carDal.GetAll();
         }
 
         public List<Car> GetAllByBrandId(int id)
         {
-            return _icarDal.GetAll(p => p.BrandId == id);
+            return _carDal.GetAll(p => p.BrandId == id);
         }
 
         public List<Car> GetByDailyPrice(decimal min, decimal max)
         {
-            return _icarDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
         }
+
+        public Car GetById(int id)
+        {
+            return _carDal.Get(p => p.Id == id);
+
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetAll(p => p.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(p => p.ColorId == id);
+        }
+
+
     }
 }

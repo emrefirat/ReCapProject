@@ -2,6 +2,7 @@
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
+using System.Text;
 
 namespace ConsoleUI
 {
@@ -22,10 +23,11 @@ namespace ConsoleUI
             foreach (var car in carManager.GetCarDetails())
             {
                 if (car.CarName == null) {
-                    Console.WriteLine("<Car Name is Null>" + " | " + car.BrandName + " | " + car.ColorName + " | " + car.DailyPrice + " TL ");
+                    Console.OutputEncoding = Encoding.Unicode;
+                    Console.WriteLine("<Car Name is Null>" + " | " + car.BrandName + " | " + car.ColorName + " | " + car.DailyPrice + " ₺ ");
                 }
-                else { 
-                Console.WriteLine(car.CarName + " | " + car.BrandName +" | " + car.ColorName +" | " + car.DailyPrice + " TL ");
+                else {
+                Console.WriteLine(car.CarName + " | " + car.BrandName +" | " + car.ColorName +" | " + car.DailyPrice + " ₺ ");
                     };
             }
         }

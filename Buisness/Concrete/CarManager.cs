@@ -83,5 +83,10 @@ namespace Buisness.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
+
+        /*public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+        }*/
     }
 }

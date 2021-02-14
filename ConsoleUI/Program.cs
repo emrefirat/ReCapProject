@@ -19,6 +19,44 @@ namespace ConsoleUI
             //-----
             //ColorListeler();
             //AddNewColorandShowList();
+            //GetCarDeetails();
+            //UserManager userManager = new UserManager(new EfUserDal());
+            //userManager.Add(new User {FirstName ="Emre",LastName = "FIRAT",Email = "emrefirat93@gmail.com",Password = "1234567890" });
+            //userManager.Add(new User { FirstName = "Adrian", LastName = "Robinson",  Email = "Adrian@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Alex", LastName = "Jackson",  Email = "Alex@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Andrew", LastName = "Wright",  Email = "Andrew@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Brandon", LastName = "Johnson",  Email = "Brandon@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Chuck", LastName = "Taylor",  Email = "Chuck@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Eric", LastName = "Adams",  Email = "Eric@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Jacob", LastName = "Smith",  Email = "Jacob@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Juan", LastName = "Rodriguez",  Email = "Juan@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Peter", LastName = "Nelson",  Email = "Peter@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Stuart", LastName = "Thomson", Email = "Stuart@test.com", Password = "Test2020"});
+            //userManager.Add(new User { FirstName = "Vincent", LastName = "Lee",  Email = "Vincent@test.com", Password = "Test2020"});
+
+            //AddRental();
+            //RentalDetails();
+
+        }
+
+        private static void RentalDetails()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal(), new EfCustomerDal());
+            foreach (var rental in rentalManager.GetRentalDetails().Data)
+            {
+                Console.WriteLine(rental.CustomerName + "|" + rental.CompanyName + "|" + rental.RentDate + "|" + rental.ReturnDate);
+            }
+        }
+
+        private static void AddRental()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal(), new EfCustomerDal());
+            var result = rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(5) });
+            Console.WriteLine(result.Message);
+        }
+
+        private static void GetCarDeetails()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             var result = carManager.GetCarDetails();
             if (result.Success)
@@ -28,7 +66,6 @@ namespace ConsoleUI
                     Console.WriteLine(car.CarName);
                 }
             }
-
         }
 
         private static void AddNewColorandShowList()

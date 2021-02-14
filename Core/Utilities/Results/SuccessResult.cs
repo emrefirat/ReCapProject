@@ -6,6 +6,8 @@ namespace Core.Utilities.Results
 {
     public class SuccessResult : Result
     {
+        public object CustomerUpdated { get; }
+
         public SuccessResult(string message) : base (true,message)
         {
    

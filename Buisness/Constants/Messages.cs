@@ -19,14 +19,26 @@ namespace Buisness.Constants
         public static string AllBrandListed = "Tüm markalar listelendi.";
         public static string BrandListedById = "Tüm markalar id'ye göre listelendi.";
         public static string ColorAdded = "Renk basariyla eklendi.";
+        public static string ColorUpdated = "Renk basariyla güncellendi..";
         public static string ColorDeleted = "Renk basariyla silindi.";
         public static string AllColorListed = "Renk basariyla güncellendi..";
         public static string ColorListedById = "Tüm renkler id'ye göre listelendi";
-        internal static string UserAdded;
-        internal static string UserUpdated;
-        internal static string UserDeleted;
-        internal static string AllUserListed;
-
-        public static object ColorUpdated { get; internal set; }
+        public static string UserAdded = "Kullanici basariyla eklendi.";
+        public static string UserUpdated;
+        public static string UserDeleted;
+        public static string AllUserListed;
+        public static string CustomerAdded = "Müsteri basariyla eklendi.";
+        public static string CustomerUpdated;
+        public static string CustomerDeleted;
+        public static string AllCustomerListed;
+        public static string GetCustomerById;
+        public static string RentalAdded = "Araç Kiralandı" ;
+        public static string RentalDeleted;
+        public static string RentalUpdated;
+        internal static string UserNotFound = "Boyle bir Kullanici Bulunamadi";
+        internal static string CustomerNotFound = "Boyle bir Musteri Bulunamadi" ;
+        internal static string CustomerExist = "Böyle bir müşteri zaten var" ;
+        internal static string CustomerExistForTheUser = "Kullanıcıya ait aynı şirkete ait bir müşteri hesabı zaten var.";
+        internal static string RentalIsNotReturned = "Kiralama henüz İade Edilmedi" ;
     }
 }

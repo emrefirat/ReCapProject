@@ -1,5 +1,6 @@
 ﻿using Buisness.Abstract;
 using Buisness.Constants;
+using Core.DataAccess;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -23,7 +24,6 @@ namespace Buisness.Concrete
             if (car.Name.Length > 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
-                Console.WriteLine(Messages.CarAdded);
                 return new SuccessResult(Messages.CarAdded);
             }
             else
@@ -35,13 +35,26 @@ namespace Buisness.Concrete
 
         public IResult Delete(Car car)
         {
-            _carDal.Delete(car);
-            return new SuccessResult(Messages.CarDeleted);
+            var carExist = _carDal.Get(c => c.Id == car.Id);
+            if (carExist != null)
+            {
+                _carDal.Delete(car);
+                return new SuccessResult(Messages.CarDeleted);
+
+            }
+            return new ErrorResult(Messages.CarNotFound);
         }
         public IResult Update(Car car)
         {
-            _carDal.Update(car);
-            return new SuccessResult(Messages.CarUpdated);
+            var carExist = _carDal.Get(c => c.Id == car.Id);
+            if (carExist != null)
+            {
+                var carObj = _carDal.Get(x => x.Id == car.Id);
+
+                _carDal.Update(car);
+                return new SuccessResult(Messages.CarUpdated);
+            }
+            return new ErrorResult(Messages.CarNotFound);
         }
 
         public IDataResult<List<Car>> GetAll()

@@ -33,12 +33,13 @@ namespace Buisness.Constants
         public static string AllCustomerListed;
         public static string GetCustomerById;
         public static string RentalAdded = "Araç Kiralandı" ;
-        public static string RentalDeleted;
-        public static string RentalUpdated;
-        internal static string UserNotFound = "Boyle bir Kullanici Bulunamadi";
-        internal static string CustomerNotFound = "Boyle bir Musteri Bulunamadi" ;
-        internal static string CustomerExist = "Böyle bir müşteri zaten var" ;
-        internal static string CustomerExistForTheUser = "Kullanıcıya ait aynı şirkete ait bir müşteri hesabı zaten var.";
-        internal static string RentalIsNotReturned = "Kiralama henüz İade Edilmedi" ;
+        public static string RentalDeleted = "Kiralama basariyla silindi.";
+        public static string RentalUpdated = "Kiralama basariyla güncellendi.";
+        public static string UserNotFound = "Boyle bir Kullanici Bulunamadi";
+        public static string CustomerNotFound = "Boyle bir Musteri Bulunamadi" ;
+        public static string CustomerExist = "Böyle bir müşteri zaten var" ;
+        public static string CustomerExistForTheUser = "Kullanıcıya ait aynı şirkete ait bir müşteri hesabı zaten var.";
+        public static string RentalIsNotReturned = "Kiralama henüz İade Edilmedi" ;
+        public static string CarNotFound = "Araba bulunamadı" ;
     }
 }

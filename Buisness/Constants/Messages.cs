@@ -41,5 +41,8 @@ namespace Buisness.Constants
         public static string CustomerExistForTheUser = "Kullanıcıya ait aynı şirkete ait bir müşteri hesabı zaten var.";
         public static string RentalIsNotReturned = "Kiralama henüz İade Edilmedi" ;
         public static string CarNotFound = "Araba bulunamadı" ;
+        public static string AllCarImagesListed = "Tüm araç resimleri listelendi.";
+        public  static string CarImagesAdded = "Araba resmi yüklendi";
+        internal static string CarImageLimitExceeded = "Aynı arabaya ait en fazla 5 görüntü eklenebilir.";
     }
 }

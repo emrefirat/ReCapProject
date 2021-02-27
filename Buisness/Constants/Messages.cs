@@ -44,5 +44,6 @@ namespace Buisness.Constants
         public static string AllCarImagesListed = "Tüm araç resimleri listelendi.";
         public  static string CarImagesAdded = "Araba resmi yüklendi";
         internal static string CarImageLimitExceeded = "Aynı arabaya ait en fazla 5 görüntü eklenebilir.";
+        internal static string CarImageNotAdded;
     }
 }

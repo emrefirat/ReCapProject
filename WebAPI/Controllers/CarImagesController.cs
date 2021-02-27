@@ -32,27 +32,23 @@ namespace WebAPI.Controllers
             //}
             if (file != null)
             {            
-                string filePath = path + file.FileName; 
-                var newGuidPath = Guid.NewGuid().ToString() + Path.GetExtension(filePath);
-                carImage.ImagePath = newGuidPath;
+                var newGuidPath = Guid.NewGuid().ToString() + Path.GetExtension(path + file.FileName);
                 using (FileStream fileStream = System.IO.File.Create(path + newGuidPath))
                 {
                     file.CopyTo(fileStream);
                     fileStream.Flush();                    
                 }
+                carImage.ImagePath = path + newGuidPath;
+                carImage.Date = DateTime.Now;
+                var result = _carImageService.Add(carImage);
+                if (result.Success)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+
             }
-            else
-            {
-                string filePath = path + "default.PNG";
-                var newGuidPath = Guid.NewGuid().ToString() + Path.GetExtension(filePath);
-                carImage.ImagePath = newGuidPath;
-            }
-            var result = _carImageService.Add(carImage);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            return BadRequest("Herhangi bir dosya gönderilmedi");
         }
         [HttpPost("Update")]
         public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm] CarImage carImage)

@@ -27,7 +27,7 @@ namespace Core.Utilities.Helpers
             return new ErrorDataResult<String>();
 
         }
-        public static IDataResult<string> Update(string oldfilepath, IFormFile newfile)
+        public static IDataResult<String> Update(string oldfilepath, IFormFile newfile)
         {
             if (File.Exists(oldfilepath))
             {
@@ -38,9 +38,9 @@ namespace Core.Utilities.Helpers
                     fileStream.Flush();
                 }
                 string newfilePath = path + newGuidPath;
-                return new SuccessDataResult<string>(newfilePath);
+                return new SuccessDataResult<String>(newfilePath,"File Added");
             }
-            return new ErrorDataResult<String>();
+            return new ErrorDataResult<String>("File Doesn't Exists");
 
         }
         public static IResult Delete(string filePath)

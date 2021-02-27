@@ -56,7 +56,7 @@ namespace Buisness.Concrete
         public IResult Delete(CarImage carImage)
         {
             _carImageDal.Delete(carImage);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarImageDeleted);
         }
 
         public IDataResult<List<CarImage>> GetAll()
@@ -69,15 +69,24 @@ namespace Buisness.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
         }
 
-        //public IResult Update(CarImage carImage)
-        //{
-        //    _carImageDal.Update(carImage);
-        //    return new SuccessResult();
-        //}
 
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            throw new NotImplementedException();
+            var fileUpload = FileHelper.Update(_carImageDal.Get(cim => cim.Id == carImage.Id).ImagePath, file);
+            if (fileUpload.Success)
+            {
+                CarImage carImagetoUpdate = _carImageDal.Get(cim => cim.Id == carImage.Id);
+                if (carImagetoUpdate == null)
+                {
+                    return new ErrorResult();
+                }
+                carImagetoUpdate.ImagePath = fileUpload.Data;
+                carImagetoUpdate.Date = DateTime.Now;
+                _carImageDal.Update(carImagetoUpdate);
+                return new SuccessResult(Messages.CarImageUpdated);
+            }
+            return new ErrorResult();
+
         }
 
         private IResult CheckIfImageLimitExceeded(int carId)

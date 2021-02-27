@@ -42,8 +42,10 @@ namespace Buisness.Constants
         public static string RentalIsNotReturned = "Kiralama henüz İade Edilmedi" ;
         public static string CarNotFound = "Araba bulunamadı" ;
         public static string AllCarImagesListed = "Tüm araç resimleri listelendi.";
-        public  static string CarImagesAdded = "Araba resmi yüklendi";
-        internal static string CarImageLimitExceeded = "Aynı arabaya ait en fazla 5 görüntü eklenebilir.";
-        internal static string CarImageNotAdded;
+        public static string CarImagesAdded = "Araba resmi yüklendi";
+        public static string CarImageLimitExceeded = "Aynı arabaya ait en fazla 5 görüntü eklenebilir.";
+        public static string CarImageNotAdded = "Araba resmi eklenemedi";
+        public static string CarImageUpdated =  "Araba ait resim güncellendi." ;
+        public static string CarImageDeleted = "Araç resmi silindi.";
     }
 }

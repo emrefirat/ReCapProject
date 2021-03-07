@@ -23,7 +23,7 @@ namespace Buisness.Concrete
         {
             _carDal = icarDal;
         }
-        [SecuredOperation("Product.List,Admin")]
+        [SecuredOperation("product.list,Admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
@@ -57,7 +57,7 @@ namespace Buisness.Concrete
             }
             return new ErrorResult(Messages.CarNotFound);
         }
-
+        [SecuredOperation("product.list")]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.AllCarListed);
